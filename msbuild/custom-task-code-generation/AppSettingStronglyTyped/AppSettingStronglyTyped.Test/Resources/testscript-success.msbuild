@@ -1,4 +1,5 @@
 ﻿<Project>
+<!-- link to dll and  the class inheriting Task -->
     <UsingTask TaskName="AppSettingStronglyTyped.AppSettingStronglyTyped" AssemblyFile="..\AppSettingStronglyTyped.dll" />
 
     <PropertyGroup>
