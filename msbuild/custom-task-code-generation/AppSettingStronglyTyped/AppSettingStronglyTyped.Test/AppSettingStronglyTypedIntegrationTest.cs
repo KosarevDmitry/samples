@@ -31,6 +31,7 @@ namespace AppSettingStronglyTyped.Test
         [TestInitialize()]
         public void Startup()
         {
+            // using Process  for dotnet build call
             output = new List<string>();
             buildProcess = new Process();
             buildProcess.StartInfo.FileName = MSBUILD;
