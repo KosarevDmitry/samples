@@ -58,7 +58,7 @@ namespace AppSettingStronglyTyped.Test
 
             //Assert
             Assert.IsFalse(success);
-            Assert.AreEqual(errors.Count, 1);
+           
             Assert.AreEqual(null, appSettingStronglyTyped.ClassNameFile);
 
             Assert.AreEqual(1, errors.Count);

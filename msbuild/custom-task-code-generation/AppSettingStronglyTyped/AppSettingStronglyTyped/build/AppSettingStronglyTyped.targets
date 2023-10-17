@@ -5,16 +5,17 @@
 	<ItemGroup>
 		<SettingFiles Include="$(RootFolder)\*.$(SettingExtensionFile)" />
 	</ItemGroup>
-
+<!--   Why is Target Name="BeforeCompile" called before compile and AfterClean target is run aftercompile?-->
 	<!--It is generated a target which is executed before the compilation-->
 	<Target Name="BeforeCompile" Inputs="@(SettingFiles)" Outputs="$(RootFolder)\$(SettingClass).generated.cs">
 		<!--Calling our custom task-->
 		<AppSettingStronglyTyped SettingClassName="$(SettingClass)" SettingNamespaceName="$(SettingNamespace)" SettingFiles="@(SettingFiles)">
-			<Output TaskParameter="ClassNameFile" PropertyName="SettingClassFileName" />
+      <!--ClassNameFile is property with output attr from AppSettingStronglyTyped class -->
+      <Output TaskParameter="ClassNameFile" PropertyName="SettingClassFileName" /> 
 		</AppSettingStronglyTyped>
 		<!--Our generated file is included to be compiled-->
 		<ItemGroup>
-			<Compile Remove="$(SettingClassFileName)" />
+			<Compile Remove="$(SettingClassFileName)" /> <!-- SettingClassFileName vaslue is MySetting.generated.cs -->
 			<Compile Include="$(SettingClassFileName)" />
 		</ItemGroup>
 	</Target>

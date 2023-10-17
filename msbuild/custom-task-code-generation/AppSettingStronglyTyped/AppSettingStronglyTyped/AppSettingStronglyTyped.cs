@@ -117,7 +117,7 @@ namespace AppSettingStronglyTyped
         {
             try
             {
-                ClassNameFile = $"{SettingClassName}.generated.cs";
+                ClassNameFile = $"{SettingClassName}.generated.cs";   //MySetting.generated.cs
                 File.Delete(ClassNameFile);
                 StringBuilder settingsClass = new StringBuilder(1024);
                 // open namespace

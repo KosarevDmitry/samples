@@ -56,7 +56,7 @@ namespace AppSettingStronglyTyped.Test
 
             //Assert
             Assert.AreEqual(0, buildProcess.ExitCode);
-            Assert.IsTrue(File.Exists(".\\Resources\\MySettingSuccess.generated.cs"));
+            Assert.IsTrue(File.Exists(".\\Resources\\MySettingSuccess.generated.cs")); //  value of SettingClassName msbuild property
             Assert.IsTrue(File.ReadLines(".\\Resources\\MySettingSuccess.generated.cs").SequenceEqual(File.ReadLines(".\\Resources\\testscript-success-class.txt")));
 
             //Cleanup
@@ -66,7 +66,7 @@ namespace AppSettingStronglyTyped.Test
         [TestMethod]
         public void NotValidSettingTextFile_SettingClassNotGenerated()
         {
-            //Arrage
+            //Arrange
             buildProcess.StartInfo.Arguments = "build -nodeReuse:false .\\Resources\\testscript-fail.msbuild /t:generateSettingClass";
 
             //Act
@@ -75,7 +75,7 @@ namespace AppSettingStronglyTyped.Test
             //Assert
             Assert.AreEqual(1, buildProcess.ExitCode);
             Assert.IsFalse(File.Exists(".\\Resources\\MySettingFail.generated.cs"));
-            Assert.IsTrue(output.Any(line => line.Contains("Incorrect line format. Valid format prop:type:defaultvalue")));
+            Assert.IsTrue(output.Any(line => line.Contains("Incorrect line format. Valid format prop:type:defaultvalue"))); // checking failed parse
         }
 
         private void ExecuteCommandAndCollectResults()
@@ -83,6 +83,8 @@ namespace AppSettingStronglyTyped.Test
             buildProcess.Start();
             while (!buildProcess.StandardOutput.EndOfStream)
             {
+                
+                // intercepting process result
                 output.Add(buildProcess.StandardOutput.ReadLine() ?? string.Empty);
             }
             buildProcess.WaitForExit();
