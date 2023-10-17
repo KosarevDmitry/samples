@@ -28,6 +28,7 @@
         <!-- These lines pack the build props/targets files to the `build` folder in the generated package.
          By convention, the .NET SDK will look for build\<Package Id>.props and build\<Package Id>.targets
          for automatic inclusion in the build. -->
+      <!-- how include props and targets to package -->
         <Content Include="build\AppSettingStronglyTyped.props" PackagePath="build\" />
         <Content Include="build\AppSettingStronglyTyped.targets" PackagePath="build\" />
     </ItemGroup>
