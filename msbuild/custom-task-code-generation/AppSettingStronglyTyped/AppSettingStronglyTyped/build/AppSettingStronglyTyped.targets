@@ -6,6 +6,7 @@
 		<SettingFiles Include="$(RootFolder)\*.$(SettingExtensionFile)" />
 	</ItemGroup>
 <!--   Why is Target Name="BeforeCompile" called before compile and AfterClean target is run aftercompile?-->
+  <!--https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process?view=vs-2022-->
 	<!--It is generated a target which is executed before the compilation-->
 	<Target Name="BeforeCompile" Inputs="@(SettingFiles)" Outputs="$(RootFolder)\$(SettingClass).generated.cs">
 		<!--Calling our custom task-->
