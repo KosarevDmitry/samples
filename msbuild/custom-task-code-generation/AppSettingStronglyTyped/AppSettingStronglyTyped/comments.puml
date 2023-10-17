@@ -1,0 +1,28 @@
+@startuml
+header https://learn.microsoft.com/en-us/visualstudio/msbuild/tutorial-custom-task-code-generation?view=vs-2022
+skinparam componentStyle rectangle
+title Code generation
+
+[class] as c
+
+component .props {
+[using Task] as u
+[property] as p 
+}
+
+component .targets as t {
+[output] as o
+[task] as ts
+[item] as i
+[class initialize] as ini
+}
+
+
+ c--|>[Microsoft.Build.Utilities.Task]
+p--> ts
+c--> o :  prop with  [Output] attr
+u --> c :register
+i--> ts
+o-- ts
+ini-->c
+@enduml
