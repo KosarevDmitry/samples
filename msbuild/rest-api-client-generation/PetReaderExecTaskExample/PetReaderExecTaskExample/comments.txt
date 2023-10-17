@@ -1,0 +1,7 @@
+Noticed that easy to look imported targets and props  in solution tree node:
+ dependencies => imports => Sdk.props , Sdk.targets
+
+
+root = true   have tio be in .editorconfig of rop level for targeted project
+
+settings of editorconfig has priority on IDE settings
