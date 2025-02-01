@@ -36,15 +36,15 @@ namespace PetShopRestClient
             return settings;
         }
 
-       
+
         public string BaseUrl
         {
-            get { return _baseUrl; }
-            set { _baseUrl = value; }
+            get => _baseUrl;
+            set => _baseUrl = value;
         }
        
 
-        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings => _settings.Value;
 
         partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
 
